@@ -12,15 +12,15 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: ls ./client
-      - run: docker build -t rallycoding/react-test -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true rallycoding/react-test npm test
+      - run: docker build -t ybled/react-test -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true ybled/react-test npm test
 
-      - run: docker build -t rallycoding/multi-client ./client
-      - run: docker build -t rallycoding/multi-nginx ./nginx
-      - run: docker build -t rallycoding/multi-server ./server
-      - run: docker build -t rallycoding/multi-worker ./worker
+      - run: docker build -t ybled/multi-client ./client
+      - run: docker build -t ybled/multi-nginx ./nginx
+      - run: docker build -t ybled/multi-server ./server
+      - run: docker build -t ybled/multi-worker ./worker
 
-      - run: docker push rallycoding/multi-client
-      - run: docker push rallycoding/multi-nginx
-      - run: docker push rallycoding/multi-server
-      - run: docker push rallycoding/multi-worker
+      - run: docker push ybled/multi-client
+      - run: docker push ybled/multi-nginx
+      - run: docker push ybled/multi-server
+      - run: docker push ybled/multi-worker
